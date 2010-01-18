@@ -10,7 +10,8 @@ class StructureType(models.Model):
     name = models.CharField(max_length=100)
 
 class EstateAttribute(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.ManyToManyField(Estate, through="EstateAttributes")
+
 
 class BalconyType(models.Model):
     name = models.CharField(max_length=100)
@@ -66,3 +67,4 @@ class Media(models.Model):
 
 class EstateAttributes(models.Model):
     attribute_id = models.ForeignKey(EstateAttribute)
+    estate_id = models.ForeignKey(Estate)
