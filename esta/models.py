@@ -9,10 +9,6 @@ class DealType(models.Model):
 class StructureType(models.Model):
     name = models.CharField(max_length=100)
 
-class EstateAttribute(models.Model):
-    name = models.ManyToManyField(Estate, through="EstateAttributes")
-
-
 class BalconyType(models.Model):
     name = models.CharField(max_length=100)
 
@@ -47,7 +43,11 @@ class Estate(models.Model):
     balcony_type = models.ForeignKey(BalconyType)
 
 
-class Announcement(Estate):
+class EstateAttribute(models.Model):
+    name = models.ManyToManyField(Estate, through="EstateAttributes")
+
+class Announcement(models.Model):
+    estate = models.OneToOneField(Estate, primary_key=True)
     text = models.TextField(max_length=1000)
     deal_type = models.ForeignKey(DealType)
     estate = models.ForeignKey(Estate)
