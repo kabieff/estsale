@@ -47,7 +47,7 @@ class Estate(models.Model):
     balcony_type = models.ForeignKey(BalconyType)
 
 
-class Announcement(models.Model):
+class Announcement(Estate):
     text = models.TextField(max_length=1000)
     deal_type = models.ForeignKey(DealType)
     estate = models.ForeignKey(Estate)
