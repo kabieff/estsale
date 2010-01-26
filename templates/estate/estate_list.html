@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Estate</h2>
+    <ul>
+        {% for estate in object_list %}
+            <li>{{ estate.type }}</li>
+            <li>{{ estate.house }}</li>
+            <li>{{ estate.structure_type }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
